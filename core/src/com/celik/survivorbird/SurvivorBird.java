@@ -8,26 +8,36 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class SurvivorBird extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture img;
+	Texture background;
+	Texture bird;
+	float birdX;
+	float birdY;
+
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		background = new Texture("background.png");
+		bird = new Texture("bird.png");
+
+		birdX = Gdx.graphics.getWidth()/4f;
+		birdY = Gdx.graphics.getHeight()/2f;
+
+
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
 		batch.begin();
-		batch.draw(img, 0, 0);
+		batch.draw(background,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+		batch.draw(bird,birdX,birdY,Gdx.graphics.getWidth()/15,Gdx.graphics.getHeight()/12);
 		batch.end();
 	}
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
-		img.dispose();
+
+
 	}
 }
